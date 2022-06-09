@@ -6,5 +6,4 @@ module.exports = async function (deployer, network, accounts) {
   // await while we deploy the DevToken
   await deployer.deploy(DevToken, "DevToken", "DVTK", 18, 5000000);
   const devToken = await DevToken.deployed()
-
 };

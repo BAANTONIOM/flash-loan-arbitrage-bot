@@ -14,7 +14,6 @@ async function main() {
   // await myERC1155.deployed();
   // console.log("AIRDROP Address: ", myERC1155.address);
 
-
 }
 
 main()

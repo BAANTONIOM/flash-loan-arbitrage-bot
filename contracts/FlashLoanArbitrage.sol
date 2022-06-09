@@ -36,8 +36,10 @@ function executeTrade(address token0, address token1, uint amount0, uint amount1
   IUniswapV2Pair(pairAddress).swap(amount0, amount1, address(this), bytes('flashloan'));
  }
 
+// Origin callback function
+//function uniswapV2Call(address _sender, uint _amount0, uint _amount1, bytes calldata _data) external {
 
-function uniswapV2Call(address _sender, uint _amount0, uint _amount1, bytes calldata _data) external {
+function uniswapV2Call(uint _amount0, uint _amount1) external {
 
   address[] memory path = new address[](2); 
   

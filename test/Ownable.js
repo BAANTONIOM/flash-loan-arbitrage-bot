@@ -30,8 +30,7 @@ contract("Ownable", async accounts => {
         }catch(error){
             assert.equal(error.reason, "Ownable: only owner can call this function", "Failed to stop non-owner from calling onlyOwner protected function");
         }
-        
-
+      
     });
 
     it("renounce ownership", async () => {
