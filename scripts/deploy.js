@@ -1,19 +1,24 @@
 const { ethers } = require("hardhat")
 
 async function main() {
+  const [deployer] = await ethers.getSigners();
 
-  const MYERC721 = await ethers.getContractFactory("MyERC721");
-  const myERC721 = await MYERC721.deploy();
+  console.log("Deploying contracts with the account:", deployer.address);
 
-  await myERC721.deployed();
-  console.log("AIRDROP Address: ", myERC721.address);
-
-  // const MyERC1155 = await ethers.getContractFactory("MyERC1155");
-  // const myERC1155 = await MyERC1155.deploy("testuri","0x3E44fc9b4e7ebaFDe8F08fb5a300C858d080F7b7");
-  //                                      //uri          //   this is your marketplace address.
-  // await myERC1155.deployed();
-  // console.log("AIRDROP Address: ", myERC1155.address);
-
+  const ArbitrageFlashLoaner = await ethers.getContractFactory(
+    "FlashLoanArbitrage"
+  );
+  const arbitrageFlashLoaner = await ArbitrageFlashLoaner
+  .deploy('0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f', '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac');
+  //+-(UniSwap and SushiSwap Factories S.C.s Addresses).
+  /**+-Ethereum MainNet & Ropsten TestNet D.EX.s Factory Addresses:_
+  +-UniSwap Factory Address = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'(Is the Same in Both MainNet and TestNet).
+  +-SushiSwap Factory Address = '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac'(Is the Same in Both MainNet and TestNet).*/
+  await arbitrageFlashLoaner.deployed();
+  console.log(
+    "ArbitrageFlashLoaner Contract Address:",
+    arbitrageFlashLoaner.address
+  );
 }
 
 main()
@@ -22,3 +27,4 @@ main()
     console.error(error);
     process.exit(1);
   });
+
