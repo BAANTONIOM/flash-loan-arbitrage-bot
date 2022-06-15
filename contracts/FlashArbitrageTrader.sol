@@ -18,13 +18,13 @@ pragma solidity >=0.8.7;
 */
 
 // importing flash loan dependencies as per https://docs.aave.com/developers/tutorials/performing-a-flash-loan/...-with-remix
-import "./FlashLoanReceiverBase.sol";
-import "./ILendingPoolAddressesProvider.sol";
-import "./ILendingPool.sol";
+import "./interface/FlashLoanReceiverBase.sol";
+import "./interface/ILendingPoolAddressesProvider.sol";
+import "./interface/ILendingPool.sol";
 
 // importing both Sushiswap V1 and Uniswap V2 Router02 dependencies
-import "./IUniswapV2Router02.sol";
-import "./SafeMath.sol";
+import "./interface/IUniswapV2Router02.sol";
+import "./interface/SafeMath.sol";
 
 contract FlashArbTrader is FlashLoanReceiverBase {
 

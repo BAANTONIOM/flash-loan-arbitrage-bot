@@ -1,7 +1,8 @@
-pragma solidity ^0.6.6;
-import "./FlashLoanReceiverBase.sol";
-import "./ILendingPoolAddressesProvider.sol";
-import "./ILendingPool.sol";
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+import "./interface/FlashLoanReceiverBase.sol";
+import "./interface/ILendingPoolAddressesProvider.sol";
+import "./interface/ILendingPool.sol";
 
 contract FlashloanV1 is FlashLoanReceiverBaseV1 {
 

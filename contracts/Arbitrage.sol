@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./IUniswapV2Router02.sol";
-import "./IERC20.sol";
+import "./interface/IUniswapV2Router02.sol";
+import "./interface/IERC20.sol";
 
 interface Structs {
     struct Val {
