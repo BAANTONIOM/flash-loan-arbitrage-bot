@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
-import Web3 from "web3";
-import { useEthers } from "@usedapp/core";
+import { useEthers, useEtherBalance } from "@usedapp/core";
 import appRoutes from '../pages/routes'
 
 const Header = () => {
-  const { activateBrowserWallet, account} = useEthers();
-  const handleConnectWallet = () => {
-    console.log("---------");
+  const { activateBrowserWallet, account } = useEthers();
+  function handleConnectWallet() {
     activateBrowserWallet();
   }
   return (
@@ -29,7 +27,11 @@ const Header = () => {
           className="button button_style_primary button_size_medium"
           onClick={handleConnectWallet}
         >
-          Connect to Metamask
+          {account ?
+                  `${account.slice(0, 6)}...${account.slice(
+                    account.length - 4,
+                    account.length
+                  )}` : "Connect to Metamask"}
         </button>
       </div>
     </header>
