@@ -1,40 +1,4 @@
-import React from 'react';
-import Web3 from "web3";
-
-
-const web3 = async () => {
-  let state = await store.getState().data;
-  let web3;
-
-  if (state.connectionType === "metamask") {
-    // web3 = await Moralis.Web3.enable();
-
-   // await Moralis.enableWeb3()
-    web3 = new Web3(Window.ethereum)
-  } else if (state.connectionType === "walletConnect") {
-    const provider = new WalletConnectProvider({
-      rpc: {
-        56: "https://bsc-dataseed.binance.org/",
-
-        //97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-      },
-      network: "binance",
-      chainId: 56,
-      infuraId: null,
-    });
-
-    await provider.enable();
-
-     web3 = new Web3(provider);
-  } else {
-    const provider = new Web3.providers.HttpProvider(
-      "https://bsc-dataseed1.defibit.io/"
-    );
-    web3 = new Web3(provider);
-  }
-
-  return web3;
-};
+import React from 'react'
 
 const FlashLoanBot = () => {
   const [token, setToken] = React.useState<string>()
@@ -112,11 +76,11 @@ const FlashLoanBot = () => {
       <div className="loan-box">
         {step === 0 && (
           <div className="step1">
-            <div className="row justify-content-center font-23 mb-5">
+            <div className="row justify-content-center font-23 mb-3">
               Description
             </div>
             <div className="">
-              <div className="mb-4">
+              <div className="mb-2">
                 <div className="font-15 mb-2">Token Address</div>
                 <select
                   className="form-control"
@@ -148,16 +112,13 @@ const FlashLoanBot = () => {
               </div>
             </div>
             <div
-              className="row justify-content-start mt-5"
+              className="row justify-content-start mt-3"
               onClick={() => deposit()}
             >
               <button className="btn btn-success next-btn">
                 Deposit ETH for Fee
               </button>
             </div>
-            {/* <div className="row justify-content-start mt-3" onClick={()=>arbitrage()}>
-          <button className="btn btn-danger next-btn">Arbistrage</button>
-        </div> */}
           </div>
         )}
         {step === 1 && (
@@ -165,7 +126,7 @@ const FlashLoanBot = () => {
             <div
               className="row justify-content-start mt-3"
             >
-              <div className="row justify-content-center font-23 mb-5">
+              <div className="row justify-content-center font-23 mb-3">
                 Please start Arbistrage with {loan}ETH
               </div>
               {!end && <button className="btn btn-danger next-btn" onClick={()=>arbitrage()}>

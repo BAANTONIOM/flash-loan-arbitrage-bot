@@ -9,7 +9,7 @@ import FlashLoanBot from './flashLoanBot/FlashLoanBot';
 
 const appRoutes = {
     flashLoanBot: {
-        path: '/flashLoanBot',
+        path: '/',
         title: 'FlashLoanBot',
         description: 'Flash Loan Bot',
         requireLogin: false,

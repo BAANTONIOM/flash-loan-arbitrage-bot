@@ -688,16 +688,16 @@ p{
   display: block;
   border: 3px #198754 solid;
   background-color: #070701;
-  width: 700px;
+  width: 40%;
 
   margin-right: 10rem;
-  margin-top: 10rem;
-  padding: 40px;
+  margin-top: 3rem;
+  padding: 2rem;
   input{
     background-color: #1a1a1a;
     outline: none;
     color: rgb(234, 255, 185);
-    font-size: 2.0rem;
+    font-size: 1.3rem;
     width: 100%;
     border-radius: 10px;
     border: 1px white solid;
@@ -713,7 +713,7 @@ p{
     background-color: #1a1a1a;
     outline: none;
     color: rgb(234, 255, 185);
-    font-size: 2.0rem;
+    font-size: 1.3rem;
     width: 100%;
     border-radius: 10px;
     width: 100%;
@@ -727,42 +727,42 @@ p{
 }
 
 .loan-text{
-  font-size: 1.9rem;
+  font-size: 1.0rem;
   color: rgba(255, 255, 255, 0.63);
 }
 
 .next-btn{
   height:60px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: rgba(248, 255, 144, 0.856)
 }
 .font-23{
-  font-size: 2.3rem;
-  color: rgba(255, 255, 255, 0.63);
-}
-.font-15{
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.63);
 }
-.font-12{
+.font-15{
   font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.63);
+}
+.font-12{
+  font-size: 1.0rem;
   color: rgba(255, 255, 255, 0.199);
 }
 .font-command{
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   color: rgba(255, 255, 255, 0.425);
 }
 
 .font-result{
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #01aa78;
 }
 
 .font-success{
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   color: #01aa78;
 }
 .command{
   overflow: auto;
-  height: 300px;
+  height: 30vh;
 }

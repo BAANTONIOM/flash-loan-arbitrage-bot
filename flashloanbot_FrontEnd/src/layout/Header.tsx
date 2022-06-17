@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
-
+import Web3 from "web3";
+import { useEthers } from "@usedapp/core";
 import appRoutes from '../pages/routes'
 
 const Header = () => {
+  const { activateBrowserWallet, account} = useEthers();
+  const handleConnectWallet = () => {
+    console.log("---------");
+    activateBrowserWallet();
+  }
   return (
     <header className="header">
       {/* <Link to={'/flashLoanBot'} className="header__logo">
@@ -19,12 +25,12 @@ const Header = () => {
         )} */}
       </nav>
       <div className="header__auth">
-        <Link
+        <button
           className="button button_style_primary button_size_medium"
-          to="/signup"
+          onClick={handleConnectWallet}
         >
           Connect to Metamask
-        </Link>
+        </button>
       </div>
     </header>
   )
