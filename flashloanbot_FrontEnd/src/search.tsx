@@ -1,45 +1,47 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 // make sure to test your own strategies, do not use this version in production
-import process from "dotenv";
+// import * as process from "dotenv";
+import * as Ether from 'ethers'
 const privateKey = process.env.PRIVATE_KEY;
+console.log(process)
 // +-Your S.C.s Address:_
 const flashLoanerAddress = process.env.FLASH_LOANER;
 
-const { ethers } = require("ethers");
-
 // +-We instantiate the UniSwap and SushiSwap Smart Contracts(UniSwap/SushiSwap A.B.I.s):_
-const UniswapV2Pair = require("./src/artifacts/contracts/interfaces/IUniswapV2Pair.sol/IUniswapV2Pair.json");
-const UniswapV2Factory = require("./src/artifacts/contracts/interfaces/IUniswapV2Factory.sol/IUniswapV2Factory.json");
+const UniswapV2Pair = require("./artifacts/contracts/interfaces/IUniswapV2Pair.sol/IUniswapV2Pair.json");
+const UniswapV2Factory = require("./artifacts/contracts/interfaces/IUniswapV2Factory.sol/IUniswapV2Factory.json");
 
 // +-Use your own Infura node in production:_
-const provider = new ethers.providers.InfuraProvider(
+const provider = new Ether.ethers.providers.InfuraProvider(
   /** 'mainnet' */ "ropsten",
   process.env.INFURA_KEY
 );
 
-const wallet = new ethers.Wallet(privateKey, provider);
-
+const wallet = new Ether.ethers.Wallet(privateKey?privateKey:'25f1e68105423f92751d7655378c6df9c63b803e6a6940477e5006c8284a34c8', provider);
 /** +-With what amount of each Token would you like to carry out the Arbitrage if
  it is convenient to start with one or the other?.RECOMMENDATION:_ At least at the
 beginning Do not risk more than € 1000.:_ */
 // +-If the Trade Starts with DAI I want to do it with *number* DAI:_
+
 const DAI_AMOUNT = 500;
 console.log("DAI Amount:_", DAI_AMOUNT);
 
-const runBot = async () => {
+
+export const RunBot = async (str:string) => {
   /** +-Ethereum MainNet & Ropsten TestNet D.EX.s Factory Addresses:_
   +-UniSwap Factory Address = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'(Is the Same in Both MainNet and TestNet).
   +-SushiSwap Factory Address = '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac'(Is the Same in Both MainNet and TestNet). */
 
   //0xc35DADB65012eC5796536bD9864eD8773aBc74C4 
   //
-  const sushiFactory = new ethers.Contract(
+  console.log(str)
+  const sushiFactory = new Ether.ethers.Contract(
     "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac",
     UniswapV2Factory.abi,
     wallet
   );
-  const uniswapFactory = new ethers.Contract(
+  const uniswapFactory = new Ether.ethers.Contract(
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
     UniswapV2Factory.abi,
     wallet
@@ -52,16 +54,16 @@ const runBot = async () => {
   const daiAddress = "0xf80a32a835f79d7787e8a8ee5721d0feafd78108";
   const wethAddress = "0xf70949bc9b52deffcda63b0d15608d601e3a7c49";
 
-  let sushiEthDai;
-  let uniswapEthDai;
+  let sushiEthDai:any;
+  let uniswapEthDai:any;
 
   const loadPairs = async () => {
-    sushiEthDai = new ethers.Contract(
+    sushiEthDai = new Ether.ethers.Contract(
       await sushiFactory.getPair(wethAddress, daiAddress),
       UniswapV2Pair.abi,
       wallet
     );
-    uniswapEthDai = new ethers.Contract(
+    uniswapEthDai = new Ether.ethers.Contract(
       await uniswapFactory.getPair(wethAddress, daiAddress),
       UniswapV2Pair.abi,
       wallet
@@ -72,7 +74,7 @@ const runBot = async () => {
 
   /** +-Every block time, we will ask Infura to check the price of ETH and Dai in Uniswap and Sushiswap.
   We’ll then compare those numbers to get the “spread,” or possible profit margin:_ */
-  provider.on("block", async (blockNumber) => {
+  provider.on("block", async (blockNumber:number) => {
     try {
       console.log(blockNumber);
 
@@ -80,18 +82,18 @@ const runBot = async () => {
       const uniswapReserves = await uniswapEthDai.getReserves();
 
       const reserve0Sushi = Number(
-        ethers.utils.formatUnits(sushiReserves[0], 18)
+        Ether.ethers.utils.formatUnits(sushiReserves[0], 18)
       );
 
       const reserve1Sushi = Number(
-        ethers.utils.formatUnits(sushiReserves[1], 18)
+        Ether.ethers.utils.formatUnits(sushiReserves[1], 18)
       );
 
       const reserve0Uni = Number(
-        ethers.utils.formatUnits(uniswapReserves[0], 18)
+        Ether.ethers.utils.formatUnits(uniswapReserves[0], 18)
       );
       const reserve1Uni = Number(
-        ethers.utils.formatUnits(uniswapReserves[1], 18)
+        Ether.ethers.utils.formatUnits(uniswapReserves[1], 18)
       );
 
       const priceUniswap = reserve0Uni / reserve1Uni;
@@ -109,7 +111,7 @@ const runBot = async () => {
         spread >
         (shouldStartEth ? ETH_AMOUNT : DAI_AMOUNT) /
           Number(
-            ethers.utils.formatEther(uniswapReserves[shouldStartEth ? 1 : 0])
+            Ether.ethers.utils.formatEther(uniswapReserves[shouldStartEth ? 1 : 0])
           );
 
       console.log(`UNISWAP PRICE ${priceUniswap}`);
@@ -126,12 +128,12 @@ const runBot = async () => {
         !shouldStartEth ? DAI_AMOUNT : 0,
         shouldStartEth ? ETH_AMOUNT : 0,
         flashLoanerAddress,
-        ethers.utils.toUtf8Bytes("1")
+        Ether.ethers.utils.toUtf8Bytes("1")
       );
 
       const gasPrice = await wallet.getGasPrice();
 
-      const gasCost = Number(ethers.utils.formatEther(gasPrice.mul(gasLimit)));
+      const gasCost = Number(Ether.ethers.utils.formatEther(gasPrice.mul(gasLimit)));
 
       /** +-DeFi transactions like this can be very expensive. There may appear to be a profitable arbitrage,
       but any profit margin may be eaten up by the cost of gas. An important check of our program is to make
@@ -151,7 +153,7 @@ const runBot = async () => {
         !shouldStartEth ? DAI_AMOUNT : 0,
         shouldStartEth ? ETH_AMOUNT : 0,
         flashLoanerAddress,
-        ethers.utils.toUtf8Bytes("1"),
+        Ether.ethers.utils.toUtf8Bytes("1"),
         options
       );
 
@@ -168,5 +170,3 @@ const runBot = async () => {
 };
 
 console.log("Bot started!");
-
-runBot();
