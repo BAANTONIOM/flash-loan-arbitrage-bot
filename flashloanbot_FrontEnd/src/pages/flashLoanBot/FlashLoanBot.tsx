@@ -34,8 +34,8 @@ const FlashLoanBot = () => {
 
           clearInterval(increment)
         }else{
-          console.log(count.toString() + "fail")
-          setResult(count.toString() + "fail")
+          console.log(count.toString() + "Loking for chance...")
+          setResult(count.toString() + "Loking for chance...")
         }
         
        }, 1000)
