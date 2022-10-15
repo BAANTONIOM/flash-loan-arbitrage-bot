@@ -1,0 +1,296 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\FlashSwap.sol": {
+      "lastModificationDate": 1661837672266,
+      "contentHash": "e5bbedb575017b149bffd58d0fee9135",
+      "sourceName": "contracts/FlashSwap.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Interfaces/IUniswapV2Pair.sol",
+        "./Interfaces/IUniswapV2Factory.sol",
+        "./Interfaces/IUniswapV2Router02.sol",
+        "./libraries/UniswapV2Library.sol",
+        "./Interfaces/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "FlashSwap"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\Interfaces\\IUniswapV2Pair.sol": {
+      "lastModificationDate": 1661837723647,
+      "contentHash": "317d33181782d0812cc1bc5ac6b19718",
+      "sourceName": "contracts/Interfaces/IUniswapV2Pair.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV2Pair"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\Interfaces\\IUniswapV2Factory.sol": {
+      "lastModificationDate": 1661837717151,
+      "contentHash": "a05df3d52df99e27eac1c1fea3b24233",
+      "sourceName": "contracts/Interfaces/IUniswapV2Factory.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV2Factory"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\Interfaces\\IUniswapV2Router02.sol": {
+      "lastModificationDate": 1661837705978,
+      "contentHash": "808bef6f03b2ecf81baf5d3e6311de3a",
+      "sourceName": "contracts/Interfaces/IUniswapV2Router02.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IUniswapV2Router01.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router02"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\libraries\\UniswapV2Library.sol": {
+      "lastModificationDate": 1661837696846,
+      "contentHash": "960f2a2f29005d6fdea9ee3619bc6bb9",
+      "sourceName": "contracts/libraries/UniswapV2Library.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../Interfaces/IUniswapV2Pair.sol",
+        "./SafeMath.sol"
+      ],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "UniswapV2Library"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\Interfaces\\IERC20.sol": {
+      "lastModificationDate": 1661837689668,
+      "contentHash": "c1a82ab02eceb9f7cbb53a8594c191f7",
+      "sourceName": "contracts/Interfaces/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\Interfaces\\IUniswapV2Router01.sol": {
+      "lastModificationDate": 1661837712377,
+      "contentHash": "ea4d23c58c397c4504e158ed1807597b",
+      "sourceName": "contracts/Interfaces/IUniswapV2Router01.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router01"
+      ]
+    },
+    "E:\\tutorial\\hardhat-tutorial\\contracts\\libraries\\SafeMath.sol": {
+      "lastModificationDate": 1661837702264,
+      "contentHash": "e5e7cf6a3c55bab76001dfddc239cc43",
+      "sourceName": "contracts/libraries/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.6"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    }
+  }
+}
